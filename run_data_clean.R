@@ -90,6 +90,9 @@ names(meanStanDevData)<-gsub("BodyBody","Body",names(meanStanDevData),fixed=TRUE
 melted_data <- melt(meanStanDevData, id=c("subjectID","activity"))
 tidy_data<-dcast(melted_data,subjectID+activity~variable,mean)
 
-# Save the tidy data to an output file TidyData.txt
+# Save the tidy data to an output text file
 write.table(tidy_data, file="TidyData.txt", row.name=FALSE, col.names=TRUE)
+
+# Save the tidy data to an ouput csv file (clearer for visualizing than the txt file)
+write.csv(tidy_data,file="TidyData.csv")
 
